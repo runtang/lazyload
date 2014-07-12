@@ -1,3 +1,4 @@
+
 KISSY.add(function (S, Node) {
 	var $ = Node.all,
 		DOM = S.DOM,
@@ -226,6 +227,11 @@ KISSY.add(function (S, Node) {
 		_filterImg : function(element) {
 			var self = this;
 
+			//如果指定的元素不存在，直接返回false
+			if ($(element).length < 1) {
+				return false;
+			}
+			
 			//只对在视口附近的元素进行加载
 			if (self._inViewport(element)) {
 				self._renderLazyImg(element);
@@ -268,6 +274,11 @@ KISSY.add(function (S, Node) {
          */
 		_filterArea : function(element) {
 			var self = this;
+
+			//如果指定的元素不存在，直接返回false
+			if ($(element).length < 1) {
+				return false;
+			}
 
 			//只对在视口附近的元素进行加载
 			if (self._inViewport(element)) {
