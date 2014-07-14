@@ -1,4 +1,3 @@
-
 KISSY.add(function (S, Node) {
 	var $ = Node.all,
 		DOM = S.DOM,
@@ -225,13 +224,8 @@ KISSY.add(function (S, Node) {
          *  过滤img懒元素
          */
 		_filterImg : function(element) {
-			var self = this;
+			var self = this;  		    
 
-			//如果指定的元素不存在，直接返回false
-			if ($(element).length < 1) {
-				return false;
-			}
-			
 			//只对在视口附近的元素进行加载
 			if (self._inViewport(element)) {
 				self._renderLazyImg(element);
@@ -274,11 +268,6 @@ KISSY.add(function (S, Node) {
          */
 		_filterArea : function(element) {
 			var self = this;
-
-			//如果指定的元素不存在，直接返回false
-			if ($(element).length < 1) {
-				return false;
-			}
 
 			//只对在视口附近的元素进行加载
 			if (self._inViewport(element)) {
@@ -370,9 +359,13 @@ KISSY.add(function (S, Node) {
 	         *  会是元素真实的宽高值，但元素的offset().top，offset().left会是window的escrollTop和Left的值；
 	         *  2. 若当前元素的祖先元素设置了display:none，img元素的width和height会是0，textarea的width和height
 	         *	是-4。
+	         *  3. 在chrome下，如果img的src属性设置成空字符串，那么使用width获得宽度的为0，在firefox下则是24px；故
+	         *  img懒元素需要设置默认得placeholer属性。
+	         *   
 	         *
-	         *  因此以上两种情况会引发这些懒元素马上被加载，故进行排除。
+	         *  因此以上三种情况会引发这些懒元素马上被加载，故进行排除。
 	         */
+
 			if ($ele.css('display') == 'none' || $ele.width() <= 0) {
 				return false;
 			}
