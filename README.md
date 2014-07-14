@@ -74,4 +74,13 @@
 - updateLazyElement，更新懒元素 _（注：懒元素并不会自动更新，如果实例化后 dom 的改变导致懒元素发生改变，需要调用该函数进行更新）_
 
 
+###demo:
+
+- <a href="http://runtang.github.io/lazyload/demo/default.html" target="_blank">默认配置</a>
+- <a href="http://runtang.github.io/lazyload/demo/config.html" target="_blank">带配置参数的调用</a>  
+- <a href="http://runtang.github.io/lazyload/demo/mutilcontainers.html" target="_blank">多个container</a> 
+- <a href="http://runtang.github.io/lazyload/demo/scrollx.html" target="_blank">水平scroll懒加载</a>
+- <a href="http://runtang.github.io/lazyload/demo/callbackfn.html" target="_blank">回调函数</a>
+
+
 
